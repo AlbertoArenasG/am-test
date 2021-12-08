@@ -3,15 +3,15 @@
     align-items: center;
 }
 
-
 .buttons-section{
     width: 100%;
    @include center();
     justify-content:center;
+margin-bottom: 70px;
     .buttons-container-section{
         display:flex;
         justify-content: space-around;
         @include center();
-        width: 70%;
+        width: 80%;
     }
 }

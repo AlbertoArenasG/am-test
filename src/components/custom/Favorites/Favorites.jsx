@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-
+import './Favorites.scss'
 const Favorites = memo(() => {
   return (
-    <div>
+    <div className='favorites'>
       Favorites
     </div>
   );

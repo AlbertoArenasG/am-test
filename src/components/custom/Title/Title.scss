@@ -1,0 +1,20 @@
+@import '../../../styles/index.scss';
+
+@mixin center (){
+    display:flex;
+    align-items: center;
+}
+
+.title-section{
+    width: 100%;
+   @include center();
+    justify-content:center;
+    margin-bottom:40px;
+    .title-container-section{
+        display:flex;
+        justify-content: space-around;
+        flex-direction:column;
+        @include center();
+        width: 70%;
+    }
+}

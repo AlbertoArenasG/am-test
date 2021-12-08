@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-
+import './Cards.scss';
 const Cards = memo(() => {
   return (
-    <div>
+    <div className='cards-section'>
       Cards
     </div>
   );

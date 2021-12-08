@@ -1,0 +1,17 @@
+@mixin center (){
+    display:flex;
+    align-items: center;
+}
+
+
+.buttons-section{
+    width: 100%;
+   @include center();
+    justify-content:center;
+    .buttons-container-section{
+        display:flex;
+        justify-content: space-around;
+        @include center();
+        width: 70%;
+    }
+}

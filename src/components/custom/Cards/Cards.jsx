@@ -1,9 +1,13 @@
 import React, { memo } from 'react';
 import './Cards.scss';
+import HorizontalCard from '../../HorizontalCard/HorizontalCard';
 const Cards = memo(() => {
   return (
     <div className='cards-section'>
-      Cards
+      <HorizontalCard/>
+      <HorizontalCard/>
+      <HorizontalCard/>
+      <HorizontalCard/>
     </div>
   );
 });

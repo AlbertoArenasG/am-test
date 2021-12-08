@@ -1,0 +1,18 @@
+.card-container {
+    height: 265px;
+    width: 515px;
+    border-radius: 16px;
+display:flex;
+background-color: white;
+margin-bottom: 60px;
+    .left-side {
+        border-radius: 16px 0 0px 16px;
+        width: 40%;
+        background: linear-gradient(135deg, #FF0000 0%, #FED482 100%);
+    }
+
+    .right-side {
+       
+        width: 60%;
+    }
+}

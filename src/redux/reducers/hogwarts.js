@@ -1,4 +1,5 @@
 const initialState = {
+  characters: [],
   students: [],
   staff: [],
   favorites: []
@@ -9,6 +10,10 @@ const Session = (state = initialState, {
   ...data
 }) => {
   switch (type) {
+    case 'SET_CARACTERS_DATA':
+      return {
+        ...state, characters: data.payload
+      };
     case 'SET_STUDENTS_DATA':
       return {
         ...state, students: data.payload

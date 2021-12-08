@@ -18,11 +18,12 @@ html {
 
 .App {
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat:no-repeat;
+  background-attachment: fixed;
   background-size: cover;
   align-items: center;
   @include center();
-  height: 100vh;
+/*   height: 100vh; */
   width: 100%;
   position:relative;
   @include media(xs) {
@@ -50,7 +51,7 @@ html {
 
   .container {
     @include center();
-    height:100vh;
+    /* height:100vh; */
     @include media(xs) {
       width: 100%
     }
@@ -64,11 +65,11 @@ html {
     }
 
     @include media(lg) {
-      width: 60%
+      width: 80%
     }
 
     @include media(xl) {
-      width: 60%
+      width: 80%
     }
   }
 

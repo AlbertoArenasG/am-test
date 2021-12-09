@@ -10,7 +10,7 @@ const Session = (state = initialState, {
   ...data
 }) => {
   switch (type) {
-    case 'SET_CARACTERS_DATA':
+    case 'SET_CHARACTERS_DATA':
       return {
         ...state, characters: data.payload
       };

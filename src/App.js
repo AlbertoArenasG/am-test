@@ -1,11 +1,43 @@
+import { API } from './helpers/http.helper'
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import Buttons from './components/custom/Buttons/Buttons'
 import Cards from './components/custom/Cards/Cards'
 import Favorites from './components/custom/Favorites/Favorites'
 import Title from './components/custom/Title/Title'
+import { useHogwartsActions } from "./redux/actions/useHogwartsActions";
 
 function App() {
-  const students = useSelector((state) => state.hogwarts.students);
+  const { setCharactersData, setFavoritesData, setStudentsData, setStaffData } = useHogwartsActions();
+  const api = API();
+  useEffect(() => {
+    const getCharacters = ()=>{
+      api.get('characters').then((res) => {
+        const studentsData = [];
+        const staffData = [];
+        res.data.forEach((item) => {
+          if (item.hogwartsStudent) {
+            studentsData.push(item);
+          }
+          if (item.hogwartsStaff) {
+            staffData.push(item);
+          }
+        });
+        setCharactersData(res.data);
+        setStudentsData(studentsData);
+        setStaffData(staffData);
+      });
+    }
+    const getFavorites = () =>{
+      api.get('favorites').then((res) => {
+        setFavoritesData(res.data);
+      });
+    }
+    getCharacters()
+    getFavorites()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className='App'>
       <Favorites/>

@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 
 export const useHogwartsActions = () => {
   const dispatch = useDispatch();
-  const setCaractersData = useCallback(
-    (data) => dispatch({ type: 'SET_CARACTERS_DATA', payload: data }),
+  const setCharactersData = useCallback(
+    (data) => dispatch({ type: 'SET_CHARACTERS_DATA', payload: data }),
     [dispatch]
   );
   const setStudentsData = useCallback(
@@ -20,5 +20,5 @@ export const useHogwartsActions = () => {
     [dispatch]
   );
   /* Here u can add more functions like this and exported here on the return */
-  return { setStudentsData, setStaffData, setFavoritesData, setCaractersData };
+  return { setStudentsData, setStaffData, setFavoritesData, setCharactersData };
 };

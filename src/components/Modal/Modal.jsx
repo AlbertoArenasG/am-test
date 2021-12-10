@@ -3,6 +3,8 @@ import { API } from "../../helpers/http.helper";
 import "./Modal.scss";
 import CloseIcon from "../../assets/icons/close.svg";
 import Button from "../button/Button";
+import { useHogwartsActions } from "../../redux/actions/useHogwartsActions";
+import { useSelector } from "react-redux";
 
 const initialValues = {
   name: "",
@@ -15,7 +17,11 @@ const initialValues = {
   alive: true,
 };
 
+const Houses = ['Gryffindor','Slytherin','Hufflepuff','Ravenclaw']
+
 const Modal = memo(({ visibility, setVisibility }) => {
+  const characters = useSelector((state) => state.hogwarts.characters);
+  const {setCharactersData} = useHogwartsActions()
   const [values, setValues] = useState(initialValues);
 
   function imageUploaded(file, setValues, values) {
@@ -26,7 +32,7 @@ const Modal = memo(({ visibility, setVisibility }) => {
       base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
       imageBase64Stringsep = base64String;
       // alert(imageBase64Stringsep);
-      console.log(imageBase64Stringsep)
+      console.log(imageBase64Stringsep);
       setValues({ ...values, image: imageBase64Stringsep });
     };
     reader.readAsDataURL(file);
@@ -35,17 +41,19 @@ const Modal = memo(({ visibility, setVisibility }) => {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    if(name==='image'){
+    if (name === "image") {
       imageUploaded(e.target.files[0], setValues, values);
-      return
+      return;
     }
-    setValues({...values,[name]:value})
+    setValues({ ...values, [name]: value });
   };
-console.log(values)
+
+  console.log(values);
+
   const onSubmitFunc = (e) => {
     e.preventDefault();
     const api = API();
-    let body={
+    let body = {
       name: values.name,
       dateOfBirth: values.dateOfBirth,
       eyeColour: values.eyeColour,
@@ -53,12 +61,18 @@ console.log(values)
       gender: values.gender,
       image: values.image,
       alive: true,
-      hogwartsStudent: values.posicion==='estudiante'?true:false,
-      hogwartsStaff: values.posicion==='staff'?true:false,
-    }
-    api.post('characters', body).then((res) => {});
-    setValues(initialValues)
-   setVisibility(false)
+      hogwartsStudent: values.posicion === "estudiante" ? true : false,
+      hogwartsStaff: values.posicion === "staff" ? true : false,
+      house:Houses[Math.floor(Math.random() * (4 - 0)) + 0]
+    };
+    api.post("characters", body).then((res) => {});
+    setValues(initialValues);
+    let newCaracters = [...characters]
+    newCaracters.push(body)
+    setCharactersData(newCaracters)
+    const inputFile = document.getElementById('input-file')
+    inputFile.value=''
+    setVisibility(false);
   };
 
   return (
@@ -66,98 +80,121 @@ console.log(values)
       <div className={`modal`}>
         <div className="title">
           <h1>Agrega un personaje</h1>
-          <img src={CloseIcon} alt="CloseIcon" onClick={()=>setVisibility(false)} />
+          <img
+            src={CloseIcon}
+            alt="CloseIcon"
+            onClick={() => setVisibility(false)}
+          />
         </div>
 
         <form onSubmit={onSubmitFunc}>
-          <div>
+          <div className="labeled-input">
             <label>nombre</label>
-            <input
-              type="text"
-              value={values.name}
-              name="name"
-              onChange={handleChange}
-            />
+            
+              <input
+                type="text"
+                value={values.name}
+                name="name"
+                onChange={handleChange}
+              />
+       
           </div>
-          <div>
+
+          <div className="labeled-input">
             <label>cumpleaños</label>
-            <input
-              type="text"
-              value={values.dateOfBirth}
-              name="dateOfBirth"
-              onChange={handleChange}
-            />
+           
+              <input
+                type="text"
+                value={values.dateOfBirth}
+                name="dateOfBirth"
+                onChange={handleChange}
+              />
+         
           </div>
-          <div>
+
+          <div className="labeled-input">
             <label>color de ojos</label>
-            <input
-              type="text"
-              value={values.eyeColour}
-              name="eyeColour"
-              onChange={handleChange}
-            />
+           
+              <input
+                type="text"
+                value={values.eyeColour}
+                name="eyeColour"
+                onChange={handleChange}
+              />
+           
           </div>
-          <div>
+
+          <div className="labeled-input">
             <label>color de pelo</label>
-            <input
-              type="text"
-              value={values.hairColour}
-              name="hairColour"
-              onChange={handleChange}
-            />
+           
+              <input
+                type="text"
+                value={values.hairColour}
+                name="hairColour"
+                onChange={handleChange}
+              />
+           
+          </div>
+          <div className="radio-group">
+            <div className="radio-title">GÉNERO</div>
+            <div className="labeled-radio">
+              <input
+                type="radio"
+                id="mujer"
+                name="gender"
+                value="mujer"
+                checked={values.gender === "mujer"}
+                onClick={handleChange}
+              />
+              <label htmlFor="mujer">Mujer</label>
+            </div>
+
+            <div className="labeled-radio">
+              <input
+                type="radio"
+                checked={values.gender === "hombre"}
+                id="hombre"
+                name="gender"
+                value="hombre"
+                onClick={handleChange}
+              />
+              <label htmlFor="hombre">Hombre</label>
+            </div>
           </div>
 
-          <div>
-            <input
-              type="radio"
-              id="mujer"
-              name="gender"
-              value="mujer"
-              checked={values.gender === "mujer"}
-              onClick={handleChange}
-            />
-            <label htmlFor="mujer">Mujer</label>
+          <div className="radio-group">
+            <div className="radio-title">POSICIÓN</div>
+            <div className="labeled-radio">
+              <input
+                type="radio"
+                id="estudiante"
+                name="posicion"
+                value="estudiante"
+                checked={values.posicion === "estudiante"}
+                onClick={handleChange}
+              />
+              <label htmlFor="estudiante">Estudiante</label>
+            </div>
+
+            <div className="labeled-radio">
+              <input
+                type="radio"
+                id="staff"
+                name="posicion"
+                value="staff"
+                checked={values.posicion === "staff"}
+                onClick={handleChange}
+              />
+              <label htmlFor="staff">Staff</label>
+            </div>
           </div>
 
-          <div>
-            <input
-              type="radio"
-              checked={values.gender === "hombre"}
-              id="hombre"
-              name="gender"
-              value="hombre"
-              onClick={handleChange}
-            />
-            <label htmlFor="hombre">Hombre</label>
-          </div>
+          <input type="file" id='input-file' name="image" onChange={handleChange} />
 
-          <div>
-            <input
-              type="radio"
-              id="estudiante"
-              name="posicion"
-              value="estudiante"
-              checked={values.posicion === "estudiante"}
-              onClick={handleChange}
-            />
-            <label htmlFor="estudiante">Estudiante</label>
-          </div>
-
-          <div>
-            <input
-              type="radio"
-              id="staff"
-              name="posicion"
-              value="staff"
-              checked={values.posicion === "staff"}
-              onClick={handleChange}
-            />
-            <label htmlFor="staff">Staff</label>
-          </div>
-
-          <input type="file" name="image" onChange={handleChange} />
-          <div>
-            <Button type="submit">GUARDAR</Button>
+          <div className='button-section'>
+            <div style={{width:'40%'}}>
+            <Button width='100%' type="submit">GUARDAR</Button>
+            </div>
           </div>
         </form>
       </div>

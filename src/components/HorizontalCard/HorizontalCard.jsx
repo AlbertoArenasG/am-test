@@ -20,8 +20,11 @@ const HorizontalCard = memo(({ characterInfo, id }) => {
 
   const onFavorites = favorites.filter((item) => item.id === id);
 
+  let image = `url(${characterInfo.image})`
+  if(!image.includes('http')) image = `url(data:image/jpeg;base64,${characterInfo.image})`
+
   let Style = {};
-  if (characterInfo) Style = {...Style, backgroundImage: `url(${characterInfo.image}` };
+  if (characterInfo) Style = {...Style, backgroundImage:image };
 
   let Style2 = {background:'linear-gradient(135deg, #FF0000 0%, #FED482 100%)'};
   if (characterInfo.house==='Slytherin') Style2 = {...Style2, background:'linear-gradient(135deg, #1C792B 0%, #82E95E 100%)' }

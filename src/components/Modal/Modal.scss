@@ -10,16 +10,18 @@
 
 .modal-container {
     position: fixed;
-    display:none;
+    display: none;
     top: 0;
     left: 0;
     height: 100vh;
     width: 100%;
     z-index: 50;
     background-color: rgba(0, 0, 0, 0.425);
-&.visible{
-    display:block
-}
+
+    &.visible {
+        display: block
+    }
+
     .modal {
         position: fixed;
         height: 596px;
@@ -29,6 +31,8 @@
         top: calc(50% - 298px);
         left: calc(50% - 363px);
         padding: 30px;
+        display: flex;
+        flex-direction: column;
 
         h1 {
             font-style: normal;
@@ -49,5 +53,85 @@
         @include media (md) {
             @include responsiveModal()
         }
+
+        .title {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            h1 {
+                margin: 0
+            }
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            height: 100%;
+            flex-wrap: wrap;
+            width: 100%;
+
+            .labeled-input {
+                display: flex;
+                flex-direction: column;
+                width: 45%;
+
+                label {
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 32px;
+                    letter-spacing: 0.01em;
+                    color: #263238;
+                    text-transform: uppercase;
+                    height: 25px;
+                }
+
+
+                input {
+                    width: 100%;
+                    height: 73px;
+                    border-radius: 10px 10px 0px 0px;
+                    color: black !important;
+                    border:none;
+                    background-color: #26323810;
+                    border-bottom: 1px solid black;
+                }
+
+            }
+
+            .radio-group {
+                display: flex;
+                width: 45%;
+                flex-wrap: wrap;
+
+                .radio-title {
+                    width: 100%;
+
+                }
+
+                .labeled-radio {
+                    width: 50%;
+
+                    label {
+                        font-size: 16px;
+                        line-height: 24px;
+                        letter-spacing: 0.01em;
+                        color: #263238;
+                    }
+                }
+            }
+
+
+            .button-section {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+        }
+
+
     }
 }

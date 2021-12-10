@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, Fragment } from "react";
 import "./Favorites.scss";
 import { useSelector } from "react-redux";
 import { useHogwartsActions } from "../../../redux/actions/useHogwartsActions";
@@ -6,12 +6,15 @@ import { API } from "../../../helpers/http.helper";
 import MarkWhite from "../../../assets/icons/mark-white.svg";
 import Add from "../../../assets/icons/add.svg";
 import Trash from "../../../assets/icons/trash.svg";
+import Modal from '../../Modal/Modal';
 
 const Favorites = memo(() => {
   const api = API();
   const { setFavoritesData } = useHogwartsActions();
   const favorites = useSelector((state) => state.hogwarts.favorites);
-  const [visibility, setVisibility] = useState(true);
+  const [visibility, setVisibility] = useState(false);
+  const [modalVisibility, setmodalVisibility] = useState(false);
+
 
   const handleDropdownVisibility = () => {
     setVisibility(!visibility);
@@ -43,6 +46,7 @@ const Favorites = memo(() => {
   });
 
   return (
+    <Fragment>
     <div className="favorite-dropdown-container">
       <div className="favorite-dropdown">
         <div className="tab" onClick={handleDropdownVisibility}>
@@ -50,7 +54,7 @@ const Favorites = memo(() => {
           <img src={MarkWhite} alt="mark" />
         </div>
 
-        <div className="tab">
+        <div className="tab" onClick={()=>setmodalVisibility(true)}>
           AGREGAR
           <img src={Add} alt="mark" />
         </div>
@@ -60,6 +64,8 @@ const Favorites = memo(() => {
         {renderFavorites}
       </div>
     </div>
+    <Modal visibility={modalVisibility} setVisibility={setmodalVisibility}/>
+    </Fragment>
   );
 });
 

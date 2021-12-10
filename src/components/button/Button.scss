@@ -22,7 +22,7 @@
             background-color: $bgButtonHover;
         }
 
-        &:active {
+        &:active, &.active {
             background-color: $bgButtonStaff;
         }
 

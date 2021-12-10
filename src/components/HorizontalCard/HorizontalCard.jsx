@@ -9,8 +9,6 @@ const HorizontalCard = memo(({ characterInfo, id }) => {
   const { setFavoritesData } = useHogwartsActions();
   const favorites = useSelector((state) => state.hogwarts.favorites);
   const api = API();
-
-  console.log(favorites);
   const dateOfBirth= characterInfo.dateOfBirth
   const gender =  characterInfo.gender
   const eyeColour =  characterInfo.eyeColour
@@ -25,7 +23,11 @@ const HorizontalCard = memo(({ characterInfo, id }) => {
   let Style = {};
   if (characterInfo) Style = {...Style, backgroundImage: `url(${characterInfo.image}` };
 
-
+  let Style2 = {background:'linear-gradient(135deg, #FF0000 0%, #FED482 100%)'};
+  if (characterInfo.house==='Slytherin') Style2 = {...Style2, background:'linear-gradient(135deg, #1C792B 0%, #82E95E 100%)' }
+  if (characterInfo.house==='Hufflepuff') Style2 = {...Style2, background:'linear-gradient(135deg, #FFC700 0%, #FFF388 100%)' }
+  if (characterInfo.house==='Ravenclaw') Style2 = {...Style2, background:'linear-gradient(135deg, #0597B7 0%, #66D1FF 100%)' }
+ 
 
   const addToFavorite = () => {
     if (favorites.length >= 5) return;
@@ -38,7 +40,7 @@ const HorizontalCard = memo(({ characterInfo, id }) => {
 
   return (
     <div className={`card-container ${characterInfo.alive? '': 'dead'} `}>
-      <div className="left-side">
+      <div className="left-side" style={Style2}>
         <div style={Style} className="avatar" />
       </div>
 

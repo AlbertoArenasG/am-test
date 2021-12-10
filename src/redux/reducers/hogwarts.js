@@ -2,7 +2,8 @@ const initialState = {
   characters: [],
   students: [],
   staff: [],
-  favorites: []
+  favorites: [],
+  selected_type_character:''
 };
 
 const Session = (state = initialState, {
@@ -26,6 +27,10 @@ const Session = (state = initialState, {
       return {
         ...state, favorites: data.payload
       };
+      case 'SET_SELECTED_TYPE_CHARACTER':
+        return {
+          ...state, selected_type_character: data.payload
+        };
     default:
       return state;
   }

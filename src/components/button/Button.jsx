@@ -1,9 +1,16 @@
 import React, { memo } from 'react';
-import './Button.scss'
-const Button = memo(({children, onClick}) => {
+import './Button.scss';
+import { useSelector } from "react-redux";
+
+const Button = memo(({children, onClick,id}) => {
+  const selected_type_character = useSelector(
+    (state) => state.hogwarts.selected_type_character
+  );
+  let active=false;
+  if(selected_type_character===id)active=true;
   return (
     <div className='button-container'>
-    <button className='button' onClick={onClick}>
+    <button className={`button ${active?'active':''}`} onClick={onClick}>
         {children}
     </button>
     </div>

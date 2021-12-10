@@ -19,6 +19,10 @@ export const useHogwartsActions = () => {
     (data) => dispatch({ type: 'SET_FAVORITES_DATA', payload: data }),
     [dispatch]
   );
+  const setSelectedTypeCharacter = useCallback(
+    (data) => dispatch({ type: 'SET_SELECTED_TYPE_CHARACTER', payload: data }),
+    [dispatch]
+  );
   /* Here u can add more functions like this and exported here on the return */
-  return { setStudentsData, setStaffData, setFavoritesData, setCharactersData };
+  return { setStudentsData, setStaffData, setFavoritesData, setCharactersData, setSelectedTypeCharacter };
 };

@@ -576,5 +576,52 @@
       "image": "http://hp-api.herokuapp.com/images/filch.jpg"
     }
   ],
-  "favorites": []
+  "favorites": [
+    {
+      "id": 1,
+      "name": "Harry Potter",
+      "species": "human",
+      "gender": "male",
+      "house": "Gryffindor",
+      "dateOfBirth": "31-07-1980",
+      "yearOfBirth": 1980,
+      "ancestry": "half-blood",
+      "eyeColour": "green",
+      "hairColour": "black",
+      "wand": {
+        "wood": "holly",
+        "core": "phoenix feather",
+        "length": 11
+      },
+      "patronus": "stag",
+      "hogwartsStudent": true,
+      "hogwartsStaff": false,
+      "actor": "Daniel Radcliffe",
+      "alive": true,
+      "image": "http://hp-api.herokuapp.com/images/harry.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Draco Malfoy",
+      "species": "human",
+      "gender": "male",
+      "house": "Slytherin",
+      "dateOfBirth": "05-06-1980",
+      "yearOfBirth": 1980,
+      "ancestry": "pure-blood",
+      "eyeColour": "grey",
+      "hairColour": "blonde",
+      "wand": {
+        "wood": "hawthorn",
+        "core": "unicorn tail-hair",
+        "length": 10
+      },
+      "patronus": "",
+      "hogwartsStudent": true,
+      "hogwartsStaff": false,
+      "actor": "Tom Felton",
+      "alive": true,
+      "image": "http://hp-api.herokuapp.com/images/draco.jpg"
+    }
+  ]
 }

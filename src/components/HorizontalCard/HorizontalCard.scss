@@ -1,18 +1,211 @@
+@import '../../styles/responsiveSize';
+
+@mixin responsiveContainer {
+    height: 181px;
+    width: 45%;
+    flex-direction: column
+}
+
+@mixin responsiveLeftSide {
+    padding: 10px 0;
+    height: 140.0000000000001px;
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+    padding: 10px 0;
+}
+
+@mixin responsiveAvatar {
+    height: 69px;
+    width: 69px;
+}
+
+@mixin responsiveStatus {
+    font-size: 11px;
+    line-height: 15px;
+    order: 1;
+}
+
+@mixin responsiveCaracterName{
+    font-size: 18px;
+    margin: 0;
+    text-align: center;
+    order: 0;
+}
 .card-container {
+    position: relative;
     height: 265px;
-    width: 515px;
+    width: 45%;
     border-radius: 16px;
-display:flex;
-background-color: white;
-margin-bottom: 60px;
+    display: flex;
+    background-color: white;
+    margin-bottom: 60px;
+
+    @include media (xs) {
+        @include responsiveContainer()
+    }
+
+    @include media (sm) {
+        @include responsiveContainer()
+    }
+
+    @include media (md) {
+        @include responsiveContainer()
+    }
+
+
+    &.dead {
+        background-color: #CCCCCC;
+    }
+
     .left-side {
         border-radius: 16px 0 0px 16px;
         width: 40%;
+        height: 265px;
         background: linear-gradient(135deg, #FF0000 0%, #FED482 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include media (xs) {
+            @include responsiveLeftSide()
+        }
+
+        @include media (sm) {
+            @include responsiveLeftSide()
+        }
+
+        @include media (md) {
+            @include responsiveLeftSide()
+        }
+
+        .avatar {
+            width: 165px;
+            height: 165px;
+            left: 23px;
+            top: 50px;
+            background: #C4C4C4;
+            border-radius: 50%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            @include media (xs) {
+                @include responsiveAvatar()
+            }
+
+            @include media (sm) {
+                @include responsiveAvatar()
+            }
+
+            @include media (md) {
+                @include responsiveAvatar()
+            }
+        }
     }
 
     .right-side {
-       
+        padding: 20px;
         width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: space-between;
+
+        @include media (xs) {
+            padding: 10px;
+            width: 100%;
+        }
+
+        @include media (sm) {
+            padding: 10px;
+            width: 100%;
+        }
+
+        @include media (md) {
+            padding: 10px;
+            width: 100%;
+        }
+
+        .caracter-status {
+            width: 100%;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 19px;
+            color: #999999;
+            display: flex;
+            justify-content: space-between;
+
+            .status {
+                width: 50%;
+
+            }
+
+            .markup {
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+                width: 50%
+            }
+
+
+
+            @include media (xs) {
+                @include responsiveStatus()
+            }
+
+            @include media (sm) {
+                @include responsiveStatus()
+            }
+
+            @include media (md) {
+                @include responsiveStatus()
+            }
+        }
+
+        .caracter-name {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 30px;
+            color: #081F32;
+          
+
+            @include media (xs) {
+                @include responsiveCaracterName()  
+            }
+
+            @include media (sm) {
+                @include responsiveCaracterName()  
+            }
+
+            @include media (md) {
+                @include responsiveCaracterName()  
+            }
+        }
+
+        .caracter-info {
+            font-family: Open Sans;
+            font-style: normal;
+            font-size: 14px;
+            line-height: 27px;
+            color: #374A59;
+
+            @include media (xs) {
+                display: none
+            }
+
+            @include media (sm) {
+                display: none
+            }
+
+            @include media (md) {
+                display: none
+            }
+
+            span {
+                font-weight: 700
+            }
+        }
     }
 }

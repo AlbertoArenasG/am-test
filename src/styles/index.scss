@@ -6,7 +6,9 @@
   justify-content: center;
   flex-direction: column;
 }
-
+*{
+  box-sizing: border-box;
+}
 body,
 html {
  
@@ -65,7 +67,7 @@ html {
     }
 
     @include media(lg) {
-      width: 80%
+      width: 90%
     }
 
     @include media(xl) {

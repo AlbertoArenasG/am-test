@@ -1,8 +1,12 @@
-.cards-section{
+@import '../../../styles/responsiveSize';
+
+
+.cards-section {
     background-color: green;
     /* height: 50vh; */
-    display:flex;
-    justify-content:space-between;
+    display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
-   /*  overflow: auto; */
+    padding: 20px;
+    
 }

@@ -21,7 +21,7 @@ export const API = () => {
 
   const post = async (endpoint, body = {}) => {
     try {
-      const res = await Axios.post(endpoint, JSON.stringify(body));
+      const res = await Axios.post(endpoint, body);
       const result = {
         status: `${res.status}-${res.statusText}`,
         headers: res.headers,

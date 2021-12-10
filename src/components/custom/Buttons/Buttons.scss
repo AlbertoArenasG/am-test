@@ -1,17 +1,31 @@
-@mixin center (){
-    display:flex;
+@import "../../../styles/responsiveSize";
+
+@mixin center () {
+    display: flex;
     align-items: center;
 }
 
-.buttons-section{
+.buttons-section {
     width: 100%;
-   @include center();
-    justify-content:center;
-margin-bottom: 70px;
-    .buttons-container-section{
-        display:flex;
+    @include center();
+    justify-content: center;
+    margin-bottom: 70px;
+
+    .buttons-container-section {
+        display: flex;
         justify-content: space-around;
         @include center();
         width: 80%;
+        @include media (xs) {
+             justify-content: space-between;
+        }
+    
+        @include media (sm) {
+             justify-content: space-between;
+        }
+    
+        @include media (md) {
+             justify-content: space-between;
+        }
     }
 }

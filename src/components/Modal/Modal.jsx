@@ -21,7 +21,7 @@ const Houses = ['Gryffindor','Slytherin','Hufflepuff','Ravenclaw']
 
 const Modal = memo(({ visibility, setVisibility }) => {
   const characters = useSelector((state) => state.hogwarts.characters);
-  const {setCharactersData} = useHogwartsActions()
+  const { setCharactersData, setStudentsData, setStaffData } = useHogwartsActions()
   const [values, setValues] = useState(initialValues);
 
   function imageUploaded(file, setValues, values) {
@@ -68,8 +68,20 @@ const Modal = memo(({ visibility, setVisibility }) => {
     api.post("characters", body).then((res) => {});
     setValues(initialValues);
     let newCaracters = [...characters]
+    const studentsData = [];
+    const staffData = [];
     newCaracters.push(body)
+    newCaracters.forEach((item) => {
+      if (item.hogwartsStudent) {
+        studentsData.push(item);
+      }
+      if (item.hogwartsStaff) {
+        staffData.push(item);
+      }
+    });
     setCharactersData(newCaracters)
+    setStudentsData(studentsData)
+    setStaffData(staffData)
     const inputFile = document.getElementById('input-file')
     inputFile.value=''
     setVisibility(false);

@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# amTest
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Levantar el proyecto:
 
-## Available Scripts
+## Para levantar la aplicación cliente, ejecutar:
+```
+npm start
+```
+Abrir http://localhost:3000 en el navegador
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Para levantar el servidor, ejecutar en una nueva terminal:
+```
+npm run server
+```
+Esto levantará el servidor de prueba en  http://localhost:5000
+# Retrospectiva
+## ¿Qué es lo que más te gustó de tu desarrollo?
+- Me gustó haber completado la prueba de desarrollar una aplicación hecha con React desde cero. React es una librería que me gusta mucho pero no he tenido muchas oportunidades de trabajar con ella en mis anteriores empleos.
+## Si hubieras tenido más tiempo ¿qué hubieras mejorado o qué más hubieras hecho?
+- Me habría gustado tener un código más limpio, con mayor separación de responsabilidades entre capas, con validaciones parametrizadas en lugar de tener criterios de validación en hardcode.
+- Agregar un loader/spinner cada que se realizara una petición AJAX para mejorar la experiencia de usuario.
+- Crear algún recurso en la nube para almacenar los archivos y que el formato del campo image, de cada personaje, tuviera el mismo formato de url.
+## Descríbenos un pain point o bug con el que te hayas encontrado y como lo solucionaste
+- Había nombres de personajes que eran muy largos y tuve que ajustar varias veces los estilos para que el contenido de las tarjetas no se saliera de las mismas y a su vez cumplir con los criterios del look & feel.
+- Al no tener un backend real o un recurso para almacenar archivos tuve problema para renderizar las imágenes de los nuevos personajes creados. Tuve que agregar una validación basada en el patrón http para renderizar las imágenes como url o como base 64, según el caso.

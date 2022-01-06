@@ -31,8 +31,6 @@ const Modal = memo(({ visibility, setVisibility }) => {
     reader.onload = function () {
       base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
       imageBase64Stringsep = base64String;
-      // alert(imageBase64Stringsep);
-      console.log(imageBase64Stringsep);
       setValues({ ...values, image: imageBase64Stringsep });
     };
     reader.readAsDataURL(file);
@@ -47,8 +45,6 @@ const Modal = memo(({ visibility, setVisibility }) => {
     }
     setValues({ ...values, [name]: value });
   };
-
-  console.log(values);
 
   const onSubmitFunc = (e) => {
     e.preventDefault();

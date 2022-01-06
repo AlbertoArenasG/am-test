@@ -8,13 +8,14 @@ import Title from './components/custom/Title/Title'
 import { useHogwartsActions } from "./redux/actions/useHogwartsActions";
 
 function App() {
-  const { setCharactersData, setFavoritesData, setStudentsData, setStaffData } = useHogwartsActions();
+  const { setCharactersData, setFavoritesData, setStudentsData, setStaffData, setAliveData } = useHogwartsActions();
   const api = API();
   useEffect(() => {
     const getCharacters = ()=>{
       api.get('characters').then((res) => {
         const studentsData = [];
         const staffData = [];
+        const aliveData = [];
         res.data.forEach((item) => {
           if (item.hogwartsStudent) {
             studentsData.push(item);
@@ -22,10 +23,14 @@ function App() {
           if (item.hogwartsStaff) {
             staffData.push(item);
           }
+          if (item.alive) {
+            aliveData.push(item);
+          }
         });
         setCharactersData(res.data);
         setStudentsData(studentsData);
         setStaffData(staffData);
+        setAliveData(aliveData);
       });
     }
     const getFavorites = () =>{

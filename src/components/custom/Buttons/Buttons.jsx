@@ -24,6 +24,7 @@ const Buttons = memo(() => {
       <div className="buttons-container-section">
         <Button onClick={() => onClickB("students")} id='students'>ESTUDIANTES</Button>
         <Button onClick={() => onClickB("staff")} id='staff'> STAFF</Button>
+        <Button onClick={() => onClickB("alive")} id='alive'> VIVOS</Button>
       </div>
     </div>
   );

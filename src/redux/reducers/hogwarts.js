@@ -2,6 +2,7 @@ const initialState = {
   characters: [],
   students: [],
   staff: [],
+  alive: [],
   favorites: [],
   selected_type_character:''
 };
@@ -22,6 +23,10 @@ const Session = (state = initialState, {
     case 'SET_STAFF_DATA':
       return {
         ...state, staff: data.payload
+      };
+    case 'SET_ALIVE_DATA':
+      return {
+        ...state, alive: data.payload
       };
     case 'SET_FAVORITES_DATA':
       return {
